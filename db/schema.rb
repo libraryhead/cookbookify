@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021235446) do
+ActiveRecord::Schema.define(:version => 20121022003748) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -28,17 +28,27 @@ ActiveRecord::Schema.define(:version => 20121021235446) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
-  create_table "recipes", :force => true do |t|
-    t.integer  "user_id"
+  create_table "recipe_sources", :force => true do |t|
     t.string   "name",                     :null => false
     t.string   "source_uri"
+    t.string   "key",        :limit => 12
     t.text     "note"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
-    t.string   "key",        :limit => 12
   end
 
-  add_index "recipes", ["key"], :name => "index_recipes_on_key", :unique => true
+  add_index "recipe_sources", ["key"], :name => "index_recipe_sources_on_key", :unique => true
+
+  create_table "recipes", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name",                           :null => false
+    t.string   "source_uri"
+    t.text     "note"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "key",              :limit => 12
+    t.integer  "recipe_source_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

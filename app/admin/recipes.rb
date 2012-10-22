@@ -5,6 +5,10 @@ ActiveAdmin.register Recipe do
     end
   end
   
+  before_filter do |controller|
+    @recipe = (Recipe.find_by_key(params[:id]) || Recipe.find(params[:id])) unless params[:id].blank?
+  end
+
   filter :name
   filter :source_uri
 
