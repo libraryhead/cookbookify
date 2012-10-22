@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20121021235446) do
     t.string   "key",        :limit => 12
   end
 
+  add_index "recipes", ["key"], :name => "index_recipes_on_key", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
