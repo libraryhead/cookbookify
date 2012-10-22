@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021201244) do
+ActiveRecord::Schema.define(:version => 20121021235446) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -30,11 +30,12 @@ ActiveRecord::Schema.define(:version => 20121021201244) do
 
   create_table "recipes", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name",       :null => false
+    t.string   "name",                     :null => false
     t.string   "source_uri"
     t.text     "note"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "key",        :limit => 12
   end
 
   create_table "users", :force => true do |t|
