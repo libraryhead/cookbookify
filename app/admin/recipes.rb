@@ -11,6 +11,7 @@ ActiveAdmin.register Recipe do
   form do |f|
     f.inputs "Recipe Details" do
       f.input :name
+      f.input :recipe_source
       f.input :source_uri
       f.input :note
     end
