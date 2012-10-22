@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20121022003748) do
     t.integer  "recipe_source_id"
   end
 
+  add_index "recipes", ["key"], :name => "index_recipes_on_key", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false

@@ -1,4 +1,5 @@
 Cookbookify::Application.routes.draw do
+
   ActiveAdmin.routes(self)
 
   devise_for :users
@@ -6,6 +7,7 @@ Cookbookify::Application.routes.draw do
   root :to => 'home#index'
 
   resources :recipes, :only => [:index, :show]
+  resources :recipe_sources, :only => [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

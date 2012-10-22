@@ -1,0 +1,5 @@
+h1 Recipe Sources
+ul
+  - @recipe_sources.each do |recipe_source|
+    li
+      a(href='#{recipe_source_path(recipe_source)}') #{recipe_source.name}
